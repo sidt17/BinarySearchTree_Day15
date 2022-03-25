@@ -25,8 +25,8 @@ namespace BinarySearchTree
             Tree.Insert(67);
             Console.WriteLine("Binary Search Tree ");
             Tree.Display();
-            Console.WriteLine("Size of Binary Search Tree- " + Tree.size);
-            Console.ReadLine();
+            bool find = Tree.search(63, Tree);
+
         }
     }
 }
