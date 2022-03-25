@@ -9,63 +9,65 @@ namespace BinarySearchTree
     public class BinaryTree<T> where T : IComparable
     {
         T nodedata;
-        public BinaryTree<T> lefttree { get; set; }
-        public BinaryTree<T> righttree { get; set; }
+        public BinaryTree<T> leftnode { get; set; }
+        public BinaryTree<T> rightnode { get; set; }
         bool result = false;
-        int leftcount = 0;
-        int rightcount = 0;
-        public int size=0;
+
         public BinaryTree(T nodedata)
         {
             this.nodedata = nodedata;
             this.nodedata = nodedata;
-            this.lefttree = null;
-            this.righttree = null;
-           
+            this.leftnode = null;
+            this.rightnode = null;
         }
 
         public void Insert(T item)
         {
-          size++;
-
             T currentnodevalue = this.nodedata;
             if ((currentnodevalue.CompareTo(item)) > 0)
             {
-                if (this.lefttree == null)
-                    this.lefttree = new BinaryTree<T>(item);
+                if (this.leftnode == null)
+                    this.leftnode = new BinaryTree<T>(item);
                 else
-                    this.lefttree.Insert(item);
-                
+                    this.leftnode.Insert(item);
             }
             else
             {
-                if (this.righttree == null)
-                    this.righttree = new BinaryTree<T>(item);
+                if (this.rightnode == null)
+                    this.rightnode = new BinaryTree<T>(item);
                 else
-                    this.righttree.Insert(item);
-               
+                    this.rightnode.Insert(item);
             }
         }
         public void Display()
         {
-            if (this.lefttree != null)
+            if (this.leftnode != null)
             {
-                this.leftcount++;
-                this.lefttree.Display();
+                this.leftnode.Display();
             }
             Console.WriteLine(this.nodedata.ToString());
-            if (this.righttree != null)
+            if (this.rightnode != null)
             {
-                this.rightcount++;
-                this.righttree.Display();
+                this.rightnode.Display();
             }
-            size++;
-        }
-        
-        public void Size()
-        {
-            Console.WriteLine("Size of Binary Serach Tree " + ( size++));
+
         }
 
+        public bool search(T element, BinaryTree<T> node)
+        {
+            if (node == null)
+                return false;
+            if (node.nodedata.Equals(element))
+            {
+                Console.WriteLine("Yes,it is present in binary search tree- " + node.nodedata);
+                return true;
+            }
+           
+            if (element.CompareTo(node.nodedata) < 0)
+                search(element, node.leftnode);
+            if (element.CompareTo(node.nodedata) > 0)
+                search(element, node.rightnode);
+            return result;
+        }
     }
 }
