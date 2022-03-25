@@ -10,11 +10,22 @@ namespace BinarySearchTree
     {
         static void Main(string[] args)
         {
-            BinaryTree<int> binarytree = new BinaryTree<int>(56);
-            binarytree.Insert(30);
-            binarytree.Insert(70);
+            BinaryTree<int> Tree = new BinaryTree<int>(56);
+            Tree.Insert(30);
+            Tree.Insert(70);
+            Tree.Insert(22);
+            Tree.Insert(40);
+            Tree.Insert(60);
+            Tree.Insert(95);
+            Tree.Insert(11);
+            Tree.Insert(65);
+            Tree.Insert(3);
+            Tree.Insert(16);
+            Tree.Insert(63);
+            Tree.Insert(67);
             Console.WriteLine("Binary Search Tree ");
-            binarytree.Display();
+            Tree.Display();
+            Console.WriteLine("Size of Binary Search Tree- " + Tree.size);
             Console.ReadLine();
         }
     }
