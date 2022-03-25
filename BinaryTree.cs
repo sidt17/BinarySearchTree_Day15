@@ -9,47 +9,63 @@ namespace BinarySearchTree
     public class BinaryTree<T> where T : IComparable
     {
         T nodedata;
-        public BinaryTree<T> leftnode { get; set; }
-        public BinaryTree<T> rightnode { get; set; }
+        public BinaryTree<T> lefttree { get; set; }
+        public BinaryTree<T> righttree { get; set; }
         bool result = false;
-
-        public BinaryTree(T nodedata)                                  
+        int leftcount = 0;
+        int rightcount = 0;
+        public int size=0;
+        public BinaryTree(T nodedata)
         {
             this.nodedata = nodedata;
             this.nodedata = nodedata;
-            this.leftnode = null;
-            this.rightnode = null;
+            this.lefttree = null;
+            this.righttree = null;
+           
         }
 
         public void Insert(T item)
         {
+          size++;
+
             T currentnodevalue = this.nodedata;
             if ((currentnodevalue.CompareTo(item)) > 0)
             {
-                if (this.leftnode == null)
-                    this.leftnode = new BinaryTree<T>(item);
+                if (this.lefttree == null)
+                    this.lefttree = new BinaryTree<T>(item);
                 else
-                    this.leftnode.Insert(item);
+                    this.lefttree.Insert(item);
+                
             }
             else
             {
-                if (this.rightnode == null)
-                    this.rightnode = new BinaryTree<T>(item);
+                if (this.righttree == null)
+                    this.righttree = new BinaryTree<T>(item);
                 else
-                    this.rightnode.Insert(item);
+                    this.righttree.Insert(item);
+               
             }
         }
         public void Display()
         {
-            if (this.leftnode != null)
+            if (this.lefttree != null)
             {
-                this.leftnode.Display();
+                this.leftcount++;
+                this.lefttree.Display();
             }
             Console.WriteLine(this.nodedata.ToString());
-            if (this.rightnode != null)
+            if (this.righttree != null)
             {
-                this.rightnode.Display();
+                this.rightcount++;
+                this.righttree.Display();
             }
+            size++;
         }
+        
+        public void Size()
+        {
+            Console.WriteLine("Size of Binary Serach Tree " + ( size++));
+        }
+
     }
 }
